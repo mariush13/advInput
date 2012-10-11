@@ -16,8 +16,7 @@
  * want to put advInputs
  * 
  * TODO ajax saving handler
- * TODO fake value show/hide
- * TODO dont send fake value
+ * TODO gray fake value no background when focus
  * 
  */
 
