@@ -9,11 +9,11 @@ $(document).ready(function(){
        advInputFocus($(this)[0]); 
     });
     
-    $('.advInput').keyup(function(){
+    $('.advInput').keydown(function(){
        advInputChange($(this)[0]); 
-       advInputChangeSize($(this));
     });
-    advInputChangeSize($('.advInput'));
+   // advInputChangeSize($('.advInput'));
+    advInputSetMinSize();
 });
 
 function saveAdvInput(advInput) {  
@@ -38,24 +38,23 @@ function advInputBlur(advInput) {
 function advInputChange(advInput) {
     if (advInput.value == '') {
         $('#advInputBackground'+advInput.id).html(advInput.defaultValue);
+        width = advInput.defaultValue.length*(8)+20+'px';
+        $('#advInputDiv'+advInput.id).css('width',width);
     } else {
         $('#advInputBackground'+advInput.id).html('');  
-    }
-}
-
-function advInputChangeSize(advInput) {
-    l = advInput.length
-    for (input = 0; input < l; input++) {
-        var text = $('#'+input).prop('value');
-        var def = $('#'+input).prop('defaultValue');
-        if (text.length == 0 && def.length > 0){
-            text = def;
-            var width = text.length*(5)+20+'px';
-            $('#advInputDiv'+input).css('min-width',width);
-        }
-        var width = text.length*(5)+20+'px';
+        width = advInput.value.length*(8)+20+'px';
         console.log(width);
-        $('#advInputDiv'+input).css('width',width);
+        $('#advInputDiv'+advInput.id).css('width',width);
     }
     
+}
+
+function advInputSetMinSize() {
+    $('.advInputDiv').css('width',function(){   
+        console.log($(this).children('.advInput')[0]);
+       return $(this).children('.advInput')[0].defaultValue.length*8+20+'px'; 
+    });
+    $('.advInputDiv').css('min-width',function(){
+        return $(this).children('.advInput')[0].defaultValue.length*8+20+'px'; 
+    });
 }
