@@ -57,6 +57,7 @@ function advInputChange(advInput) {
 
 function advInputReset(advInput) {
     advInput.value = '';
+    advInput.blur();
 }
 
 function advInputSetMinSize() {
@@ -67,9 +68,11 @@ function advInputSetMinSize() {
         return $(this).children('.advInput')[0].defaultValue.length*8+20+'px'; 
     });
     
-    function saveAdvInput(advInput) {  
-        if (advInput.value != advInput.defaultValue){
-            //do some ajax stuff here
-        }   
-    }
+}
+
+function saveAdvInput(advInput) {  
+    if (advInput.value != advInput.defaultValue){
+        //do some ajax stuff here
+    }   
+    advInput.blur();
 }
