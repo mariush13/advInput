@@ -16,7 +16,6 @@
  * want to put advInputs
  * 
  * TODO ajax saving handler
- * TODO gray fake value no background when focus
  * 
  */
 
@@ -56,7 +55,7 @@ class advInput {
     }
     
     public function show() {
-        $ret = '<div class="advInputDiv">';
+        $ret = '<div class="advInputDiv"><div class="advInputBackground" id="advInputBackground'.$this->ID.'"></div>';
         $ret .= '<input type="text" class="advInput" name="'.$this->Name.'"';
         $ret .= ' id="'.$this->ID.'"';
         $ret .= ($this->Value) ? ' value="'.$this->Value.'"' : '';
