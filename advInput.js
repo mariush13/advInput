@@ -56,7 +56,7 @@ function advInputChange(advInput) {
 }
 
 function advInputReset(advInput) {
-    advInput.value = advInput.defaultValue;
+    advInput.value = '';
 }
 
 function advInputSetMinSize() {
