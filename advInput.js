@@ -12,15 +12,22 @@ $(document).ready(function(){
     $('.advInput').keydown(function(){
        advInputChange($(this)[0]); 
     });
-   // advInputChangeSize($('.advInput'));
+    
+    $('.advInput').keyup(function(event){
+        
+        switch(event.which){
+           case 13: saveAdvInput($(this)[0]); break;
+           case 27: advInputReset($(this)[0]); break;
+        }
+        advInputChange($(this)[0])
+    });
+    
+    $('.advInput').keypress(function(){
+        advInputChange($(this)[0]); 
+    });
+
     advInputSetMinSize();
 });
-
-function saveAdvInput(advInput) {  
-    if (advInput.value != advInput.defaultValue){
-      //do some ajax stuff
-    }   
-}
 
 function advInputFocus(advInput) {    
     if (advInput.value == advInput.defaultValue) {
@@ -43,18 +50,26 @@ function advInputChange(advInput) {
     } else {
         $('#advInputBackground'+advInput.id).html('');  
         width = advInput.value.length*(8)+20+'px';
-        console.log(width);
         $('#advInputDiv'+advInput.id).css('width',width);
     }
     
 }
 
+function advInputReset(advInput) {
+    advInput.value = advInput.defaultValue;
+}
+
 function advInputSetMinSize() {
     $('.advInputDiv').css('width',function(){   
-        console.log($(this).children('.advInput')[0]);
        return $(this).children('.advInput')[0].defaultValue.length*8+20+'px'; 
     });
     $('.advInputDiv').css('min-width',function(){
         return $(this).children('.advInput')[0].defaultValue.length*8+20+'px'; 
     });
+    
+    function saveAdvInput(advInput) {  
+        if (advInput.value != advInput.defaultValue){
+            //do some ajax stuff here
+        }   
+    }
 }

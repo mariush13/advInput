@@ -1,6 +1,6 @@
 .advInputDiv {
     display: inline-block;    
-}    
+}
 
 .advInput {
     width: 100%;
@@ -16,7 +16,7 @@
 
 .advInput:hover {
     border: 1px lightgray solid;    
-}    
+}
 
 .advInput:focus {
     outline: none;  
@@ -31,4 +31,4 @@
     font-family: Courier;
     color: gray;
     z-index: -1;
-}      
+}    
