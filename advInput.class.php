@@ -55,7 +55,7 @@ class advInput {
     }
     
     public function show() {
-        $ret = '<div class="advInputDiv"><div class="advInputBackground" id="advInputBackground'.$this->ID.'"></div>';
+        $ret = '<div class="advInputDiv" id="advInputDiv'.$this->ID.'"><div class="advInputBackground" id="advInputBackground'.$this->ID.'"></div>';
         $ret .= '<input type="text" class="advInput" name="'.$this->Name.'"';
         $ret .= ' id="'.$this->ID.'"';
         $ret .= ($this->Value) ? ' value="'.$this->Value.'"' : '';
