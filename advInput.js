@@ -51,8 +51,7 @@ function advInputChange(advInput) {
         $('#advInputBackground'+advInput.id).html('');  
         width = advInput.value.length*(8)+20+'px';
         $('#advInputDiv'+advInput.id).css('width',width);
-    }
-    
+    } 
 }
 
 function advInputReset(advInput) {
@@ -72,6 +71,9 @@ function advInputSetMinSize() {
 
 function saveAdvInput(advInput) {  
     if (advInput.value != advInput.defaultValue){
+        advInput.defaultValue = advInput.value;
+        advInputSetMinSize();
+        
         //do some ajax stuff here
     }   
     advInput.blur();
