@@ -30,5 +30,25 @@
     margin-left: 6px; 
     font-family: Courier;
     color: gray;
-    z-index: -1;
-}    
+    z-index: -1;   
+}
+
+/* IE hack */
+.advInputBackground {
+    margin-top: 5px\9;    
+}
+
+/* FF hack */
+@-moz-document url-prefix() {
+    .advInputBackground {
+        margin-top: 3px;
+        margin-left: 7px;
+    }
+}
+
+/* Opera hack */
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    head~body .advInputBackground {
+        margin-top: 5px;
+    }
+}

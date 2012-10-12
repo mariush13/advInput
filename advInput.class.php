@@ -11,7 +11,7 @@
  * Include or require this file (advInput.class.php)
  * 
  * Make variable eg. $advInit with instance of advInputInit class;
- * In HEAD section write
+ * In HEAD section write:
  * <?=$advInit->getCssTag()?> or <?=$advInit->getCss()?> for CSS
  * and
  * <?=$advInit->getJsTag()?> or <?=$advInit->getJs()?> for JS
@@ -64,7 +64,6 @@ class advInput {
     protected $Name;
     protected $ID;
     protected $Value;
-
     protected static $Counter = 0;
     
     public function __construct($Name, $Value = null, $CssFile = null, $JsFile = null) {

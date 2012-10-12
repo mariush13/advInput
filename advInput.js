@@ -2,7 +2,6 @@ $(document).ready(function(){
    
     $('.advInput').blur(function(){
         advInputBlur($(this)[0]);
-        saveAdvInput($(this)[0]); 
     }); 
     
     $('.advInput').focus(function(){
