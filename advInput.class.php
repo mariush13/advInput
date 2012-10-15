@@ -3,45 +3,45 @@
 /*
  * advInput by Mariush
  * version 1.1.0
- * 
+ *
  * Required jQuery!
- * 
+ *
  * Usage:
- * 
+ *
  * Include or require this file (advInput.class.php)
- * 
+ *
  * Make a PHP variable (or variables) with instance of advInput class
  * eg.
  * $input = new AdvInput('name','value',array('some_class'),array('style'->'max-width:200px');
- * 
+ *
  * Only the first parameter is required
- * 
+ *
  * Include Css, Js and jQuery files in your HTML file HEAD section
- * 
+ *
  * Write simple script:
  * <script type="text/javascript">
  * var advInput = new advInput(function(input){
  *   //do some ajax stuff to save advInput value
  * });
  * </script>
- * 
+ *
  * 'input' variable is a advInput DOM object
  * so you can access to input's DOM properties
- * 
+ *
  * Replace comment with your code to handle save advInput
  * value using AJAX
- * 
+ *
  */
 
 class advInput {
-    
+
     protected $Name;
     protected $ID;
     protected $Value;
     protected static $Counter = 0;
     protected $Class;
     protected $Params;
-    
+
     public function __construct($Name, $Value = null, $Class = null, $Params = null) {
         $this->Name = $Name;
         $this->Value = $Value;
@@ -50,7 +50,7 @@ class advInput {
         $this->ID = self::$Counter;
         self::$Counter++;
     }
-        
+
     public function show() {
         $ret = '<div class="advInputDiv" id="advInputDiv'.$this->ID.'"><div class="advInputBackground" id="advInputBackground'.$this->ID.'"></div>';
         $ret .= '<input type="text" class="advInput';
