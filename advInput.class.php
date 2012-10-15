@@ -2,7 +2,7 @@
 
 /*
  * advInput by Mariush
- * version 1.0.1
+ * version 1.1.0
  * 
  * Required jQuery!
  * 
@@ -10,54 +10,25 @@
  * 
  * Include or require this file (advInput.class.php)
  * 
- * Make variable eg. $advInit with instance of advInputInit class;
- * In HEAD section write:
- * <?=$advInit->getCssTag()?> or <?=$advInit->getCss()?> for CSS
- * and
- * <?=$advInit->getJsTag()?> or <?=$advInit->getJs()?> for JS
+ * Make a PHP variable (or variables) with instance of advInput class
+ * eg.
+ * $input = new AdvInput('name','value',array('some_class'),array('style'->'max-width:200px');
  * 
- * Make sure that you inserted right paths to advInputInit constructor
+ * Only the first parameter is required
  * 
- * Now make variable (or variables) with instances of advInput
- * In place where you wat to place advInput write
- * <?=$advInput->show()?>
+ * Include Css and Js files in your HTML file HEAD section
  * 
- * Where $advInput is variable with advInput class instance
+ * Write simple script
+ * <script type="text/javascript">
+ * var advInput = new advInput(function(advInput){
+ *   //do some ajax stuff to save advInput value
+ * });
+ * </script>
  * 
- * If you want to save advInput value you can use 2 ways:
- * - make form submit
- * - write some ajax code in saveAdvInput function in file AdvInput.js
- * 
+ * Replace comment with your code to handle save advInput
+ * value using AJAX
  * 
  */
-
-class advInputInit {
-    
-    protected $Css;
-    protected $Js;
-    
-    public function __construct($CssFile = null, $JsFile = null) {
-        $this->Css = ($CssFile)? $CssFile : './advInput/advInput.css';
-        $this->Js = ($JsFile)? $JsFile : './advInput/advInput.js';          
-    }
-    
-    public function getCss() {
-        return '<style type="text/css">'.file_get_contents($this->Css).'</style>';
-    }
-    
-    public function getCssTag() {
-        return '<link rel="stylesheet" type="text/css" href="'.$this->Css.'">';
-    }
-    
-    public function getJs() {
-        return '<script type="text/javascript">'.file_get_contents($this->Js).'</script>';
-    }
-    
-    public function getJsTag() {
-        return '<script type="text/javascript" src="'.$this->Js.'"></script>';
-    }    
-    
-}
 
 class advInput {
     
@@ -65,20 +36,30 @@ class advInput {
     protected $ID;
     protected $Value;
     protected static $Counter = 0;
+    protected $Class;
+    protected $Params;
     
-    public function __construct($Name, $Value = null, $CssFile = null, $JsFile = null) {
+    public function __construct($Name, $Value = null, $Class = null, $Params = null) {
         $this->Name = $Name;
         $this->Value = $Value;
-        $this->DefaultValue = $DefaultValue;
+        $this->Class = $Class;
+        $this->Params = $Params;
         $this->ID = self::$Counter;
         self::$Counter++;
     }
         
     public function show() {
         $ret = '<div class="advInputDiv" id="advInputDiv'.$this->ID.'"><div class="advInputBackground" id="advInputBackground'.$this->ID.'"></div>';
-        $ret .= '<input type="text" class="advInput" name="'.$this->Name.'"';
+        $ret .= '<input type="text" class="advInput';
+        foreach ($this->Class as $Class) {
+            $ret .= ' '.$Class;
+        }
+        $ret .= '" name="'.$this->Name.'"';
         $ret .= ' id="'.$this->ID.'"';
         $ret .= ($this->Value) ? ' value="'.$this->Value.'"' : '';
+        foreach ($this->Params as $Key=>$Param) {
+            $ret .= ' '.$Key.'="'.$Param.'"';
+        }
         $ret .= '></div>';
         return $ret;
     }
