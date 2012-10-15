@@ -16,14 +16,17 @@
  * 
  * Only the first parameter is required
  * 
- * Include Css and Js files in your HTML file HEAD section
+ * Include Css, Js and jQuery files in your HTML file HEAD section
  * 
- * Write simple script
+ * Write simple script:
  * <script type="text/javascript">
- * var advInput = new advInput(function(advInput){
+ * var advInput = new advInput(function(input){
  *   //do some ajax stuff to save advInput value
  * });
  * </script>
+ * 
+ * 'input' variable is a advInput DOM object
+ * so you can access to input's DOM properties
  * 
  * Replace comment with your code to handle save advInput
  * value using AJAX
